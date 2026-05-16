@@ -12,6 +12,7 @@ backend/datasets/
 backend/models/*.json
 reports/generated/
 coverage/
+logs/
 
 # Build output and caches.
 dist/
@@ -23,6 +24,9 @@ build/
 
 # Logs and OS/editor files.
 *.log
+*.sqlite
+*.sqlite3
+*.db
 .DS_Store
 Thumbs.db
 .idea/
