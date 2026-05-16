@@ -1,0 +1,11 @@
+{
+  "name": "@email-soc/frontend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "build": "node scripts/build-static.mjs",
+    "lint": "node --check src/main.js"
+  }
+}

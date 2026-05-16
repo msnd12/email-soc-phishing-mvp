@@ -1,0 +1,29 @@
+node_modules/
+**/node_modules/
+.npm-cache/
+
+# Local secrets and environment overrides. Keep .env.example committed.
+.env
+.env.*
+!.env.example
+
+# Local datasets, trained models, and generated evidence.
+backend/datasets/
+backend/models/*.json
+reports/generated/
+coverage/
+
+# Build output and caches.
+dist/
+build/
+**/dist/
+**/build/
+.turbo/
+.cache/
+
+# Logs and OS/editor files.
+*.log
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

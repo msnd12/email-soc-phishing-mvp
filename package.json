@@ -1,0 +1,30 @@
+{
+  "name": "email-soc-phishing-mvp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Real email phishing detection MVP for a SOC dashboard.",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm:dev --workspace backend\" \"npm:dev --workspace frontend\"",
+    "backend:dev": "npm run dev --workspace backend",
+    "frontend:dev": "npm run dev --workspace frontend",
+    "build": "npm run build --workspace backend && npm run build --workspace frontend",
+    "lint": "npm run lint --workspace backend && npm run lint --workspace frontend",
+    "test": "npm run test --workspace backend",
+    "db:migrate": "npm run db:migrate --workspace backend",
+    "seed:admin": "npm run seed:admin --workspace backend",
+    "email:rescore": "npm run email:rescore --workspace backend",
+    "ai:train": "npm run ai:train --workspace backend",
+    "ai:train:von": "npm run ai:train:von --workspace backend",
+    "ai:train:von-ngram": "npm run ai:train:von-ngram --workspace backend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "dependencies": {
+    "@nestjs/platform-express": "^11.1.20"
+  }
+}
