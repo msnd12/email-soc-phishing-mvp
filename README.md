@@ -23,6 +23,23 @@ It does not claim the broader dashboard is complete. Microsoft 365 and enforceme
 - Threat intel: VirusTotal URL API, urlscan.io API, Google Safe Browsing API
 - Email provider: Gmail API OAuth 2.0, Gmail watch/Pub/Sub, and polling fallback
 
+## Screenshots: How It Works
+
+These screenshots use sanitized example data only. They show the real analyst workflow without exposing a live mailbox, API keys, stored emails, or credentials.
+
+1. Connect Gmail, then use `Fetch latest` or Gmail Pub/Sub to ingest real inbox messages.
+2. The backend extracts URLs, sender/authentication signals, and attachment metadata.
+3. URLs are checked with configured threat-intel providers, then the scoring engine creates an explainable alert.
+4. The analyst reviews the alert evidence, marks the verdict, runs configured playbooks, and every action is audit logged.
+
+### Email Security Overview
+
+![Email Security Overview](docs/screenshots/email-soc-overview.png)
+
+### Email Alert Evidence Detail
+
+![Email alert evidence detail](docs/screenshots/email-alert-detail.png)
+
 ## Local Setup
 
 1. Install dependencies:
