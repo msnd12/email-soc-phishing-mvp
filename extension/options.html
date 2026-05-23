@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Email SOC Extension Settings</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="options-body">
+    <main class="options-shell">
+      <h1>Email SOC Extension Settings</h1>
+      <p class="muted">Point the extension at your local Email SOC backend and dashboard.</p>
+      <form class="panel settings-form" data-settings-form>
+        <label>Backend API URL<input name="apiBaseUrl" placeholder="http://localhost:4000" /></label>
+        <label>Dashboard URL<input name="dashboardUrl" placeholder="http://localhost:5173" /></label>
+        <button class="primary" type="submit">Save settings</button>
+        <p class="notice" data-status hidden></p>
+      </form>
+      <section class="panel">
+        <h2>Required Backend CORS Setting</h2>
+        <p>Add your extension origin to the backend `.env`, then restart the backend.</p>
+        <pre><code>EXTENSION_ALLOWED_ORIGINS=chrome-extension://YOUR_EXTENSION_ID</code></pre>
+        <p class="muted">Find the ID at `chrome://extensions` after loading this folder as an unpacked extension.</p>
+      </section>
+    </main>
+    <script type="module" src="options.js"></script>
+  </body>
+</html>

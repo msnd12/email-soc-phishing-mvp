@@ -9,6 +9,7 @@ export type AppConfig = {
   jwtSecret: string;
   encryptionKey: Buffer;
   fullMessageStorageEnabled: boolean;
+  extensionAllowedOrigins: string[];
   google: {
     clientId?: string;
     clientSecret?: string;
@@ -62,6 +63,10 @@ export function loadConfig(): AppConfig {
     jwtSecret: requireEnv("JWT_SECRET"),
     encryptionKey: encryptionKeyFromEnv(),
     fullMessageStorageEnabled: process.env.FULL_MESSAGE_STORAGE_ENABLED === "true",
+    extensionAllowedOrigins: (process.env.EXTENSION_ALLOWED_ORIGINS ?? "")
+      .split(",")
+      .map((origin) => origin.trim())
+      .filter(Boolean),
     google: {
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,

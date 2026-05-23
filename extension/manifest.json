@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Email SOC Phishing Detector",
+  "version": "0.1.0",
+  "description": "Companion extension for the Email SOC phishing detection MVP.",
+  "permissions": ["storage", "activeTab", "tabs"],
+  "host_permissions": [
+    "http://localhost:4000/*",
+    "https://mail.google.com/*",
+    "https://outlook.office.com/*",
+    "https://outlook.office365.com/*"
+  ],
+  "action": {
+    "default_title": "Email SOC",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://mail.google.com/*", "https://outlook.office.com/*", "https://outlook.office365.com/*"],
+      "js": ["content-script.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "options_page": "options.html"
+}

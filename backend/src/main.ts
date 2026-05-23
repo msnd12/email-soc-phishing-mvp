@@ -8,6 +8,7 @@ import { loadConfig } from "./config";
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { cors: false });
   const config = loadConfig();
+  const allowedOrigins = new Set([config.appUrl, "http://localhost:5173", ...config.extensionAllowedOrigins]);
 
   app.getHttpAdapter().getInstance().disable("x-powered-by");
   app.use(
@@ -17,7 +18,13 @@ async function bootstrap() {
     })
   );
   app.enableCors({
-    origin: [config.appUrl, "http://localhost:5173"],
+    origin(origin: string | undefined, callback: (error: Error | null, allow?: boolean) => void) {
+      if (!origin || allowedOrigins.has(origin)) {
+        callback(null, true);
+        return;
+      }
+      callback(new Error(`CORS origin not allowed: ${origin}`), false);
+    },
     credentials: true,
     allowedHeaders: ["Authorization", "Content-Type", "x-ms-client-state", "x-goog-channel-token"],
     methods: ["GET", "POST", "PATCH", "OPTIONS"]

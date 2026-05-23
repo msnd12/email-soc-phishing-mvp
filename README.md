@@ -129,6 +129,35 @@ These screenshots use sanitized example data only. They show the real analyst wo
 
 6. If Pub/Sub is not ready, use the dashboard `Fetch latest` button. That uses the Gmail API against the real connected mailbox and ingests recent inbox messages.
 
+## Browser Extension
+
+The repo includes a Chrome/Edge Manifest V3 companion extension in `extension/`.
+
+The extension is not a fake standalone scanner. It uses the same backend authentication, Gmail ingestion, threat-intel lookup, alerts, and audit logging as the dashboard.
+
+1. Start the backend and frontend:
+
+   ```powershell
+   npm.cmd run backend:dev
+   npm.cmd run frontend:dev
+   ```
+
+2. Open `chrome://extensions` or `edge://extensions`.
+3. Enable Developer mode.
+4. Click `Load unpacked`.
+5. Select the `extension` folder.
+6. Copy the extension ID.
+7. Add the exact origin to `.env`:
+
+   ```text
+   EXTENSION_ALLOWED_ORIGINS=chrome-extension://YOUR_EXTENSION_ID
+   ```
+
+8. Restart the backend.
+9. Open the extension popup, log in, connect Gmail, and click `Fetch latest`.
+
+See `extension/README.md` for the full extension workflow and security notes.
+
 ## Threat Intel Setup
 
 Add at least VirusTotal and urlscan.io keys for the acceptance proof:
