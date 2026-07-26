@@ -22,7 +22,7 @@
     "ai:train:von-ngram": "npm run ai:train:von-ngram --workspace backend"
   },
   "devDependencies": {
-    "concurrently": "^9.1.2"
+    "concurrently": "^9.2.4"
   },
   "dependencies": {
     "@nestjs/platform-express": "^11.1.20"
